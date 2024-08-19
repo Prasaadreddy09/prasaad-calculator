@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Basics Assessment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #444;
+        }
+        h2 {
+            color: #555;
+        }
+        .task {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        p {
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+    <script>
+        // Task 1: Simple Calculator (Variables, Operators, and Control Structures)
+        function simpleCalculator(num1, num2, operator) {
+            let result;
+
+            switch (operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    result = num1 / num2;
+                    break;
+                default:
+                    return "Invalid operator";
+            }
+
+            return result;
+        }
+
+        function runCalculator() {
+            const num1 = parseFloat(document.getElementById("calcNum1").value);
+            const num2 = parseFloat(document.getElementById("calcNum2").value);
+            const operator = document.getElementById("calcOperator").value;
+            const result = simpleCalculator(num1, num2, operator);
+            document.getElementById("calculatorResult").innerText = `Result: ${result}`;
+        }
+
+        // Task 2: Array Operations (Arrays and Loops)
+        function sumOfEvenNumbers(arr) {
+            let sum = 0;
+
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] % 2 === 0) {
+                    sum += arr[i];
+                }
+            }
+
+            return sum;
+        }
+
+        function runArraySum() {
+            const arrayInput = document.getElementById("arrayInput").value.split(',').map(Number);
+            const result = sumOfEvenNumbers(arrayInput);
+            document.getElementById("arrayResult").innerText = `Sum of even numbers: ${result}`;
+        }
+
+        // Task 3: Object Manipulation (Objects and Functions)
+        const Person = {
+            firstName: "John",
+            lastName: "Doe",
+            age: 30,
+            
+            getFullName: function() {
+                return `${this.firstName} ${this.lastName}`;
+            },
+            
+            incrementAge: function() {
+                this.age += 1;
+            }
+        };
+
+        function runPersonInfo() {
+            document.getElementById("personName").innerText = `Full Name: ${Person.getFullName()}`;
+            Person.incrementAge();
+            document.getElementById("personAge").innerText = `New Age: ${Person.age}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>JavaScript Basics Assessment</h1>
+
+    <!-- Task 1: Simple Calculator -->
+    <div class="task">
+        <h2>Task 1: Simple Calculator</h2>
+        <input type="number" id="calcNum1" placeholder="Enter first number">
+        <input type="number" id="calcNum2" placeholder="Enter second number">
+        <input type="text" id="calcOperator" placeholder="Enter operator (+, -, *, /)">
+        <button onclick="runCalculator()">Calculate</button>
+        <p id="calculatorResult">Result: </p>
+    </div>
+
+    <!-- Task 2: Array Operations -->
+    <div class="task">
+        <h2>Task 2: Array Operations</h2>
+        <input type="text" id="arrayInput" placeholder="Enter numbers separated by commas">
+        <button onclick="runArraySum()">Calculate Sum of Even Numbers</button>
+        <p id="arrayResult">Sum of even numbers: </p>
+    </div>
+
+    <!-- Task 3: Object Manipulation -->
+    <div class="task">
+        <h2>Task 3: Object Manipulation</h2>
+        <button onclick="runPersonInfo()">Get Person Info</button>
+        <p id="personName">Full Name: </p>
+        <p id="personAge">New Age: </p>
+    </div>
+</body>
+</html>
